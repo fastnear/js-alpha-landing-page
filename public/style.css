@@ -1,0 +1,170 @@
+:root {
+    --bg-dark: #0a192f;
+    --text: #ffffff;
+    --accent: #64ffda;
+    --card-bg: rgba(13, 25, 48, 0.95);
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+}
+
+/* top bar container */
+.nav-container {
+    background: var(--card-bg);
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+    padding: 1rem;
+    position: relative;
+}
+/* used so we can center the links while floating sign-in on the right */
+.nav-content {
+    max-width: 64rem;
+    margin: 0 auto;
+    text-align: center; /* globally center GitHub & NPM links */
+}
+.nav-links a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.875rem;
+    margin: 0 1rem;
+    transition: color 0.2s ease;
+}
+.nav-links a:hover {
+    color: var(--accent);
+}
+/* small icon spacing */
+.nav-links svg {
+    margin-right: 0.5rem;
+}
+
+/* sign in/out section on the top right */
+.auth-section {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+.auth-name {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+.auth-button {
+    background: var(--accent);
+    color: var(--bg-dark);
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+.auth-button:hover {
+    opacity: 0.85;
+}
+
+.app-card {
+    background-color: var(--card-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.pixel {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    transition: transform 0.15s ease;
+}
+.pixel:hover {
+    transform: scale(1.5);
+    z-index: 1;
+}
+
+.token-table {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.code-card {
+    background: #1a2634;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 0.5rem;
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+.code-card pre {
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Hideable snippet container */
+.hidden-snippet {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    margin-top: 0 !important;
+    padding: 0 !important;
+}
+
+/* Dark gray label in top-left of code snippet */
+.code-label-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #333;
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.4rem 0.8rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Copy button: dark gray with lighter text */
+.copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #444 !important;
+    border: none;
+    color: #ccc !important;
+    font-size: 0.9rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    z-index: 10;
+}
+.copy-button:hover {
+    background: #555 !important;
+}
+
+#board {
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 0 auto; /* center horizontally */
+}
+
+.snippet-arrow {
+    width: 28px;
+    height: 28px;
+    fill: var(--accent);
+    transition: transform 0.3s ease, fill 0.3s ease;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+.snippet-arrow.rotated {
+    transform: rotate(180deg);
+}
+.snippet-arrow.gray {
+    fill: gray;
+}
