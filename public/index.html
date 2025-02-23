@@ -7,7 +7,6 @@
   <link href="assets/favicon.png" rel="icon" type="image/png"/>
 
   <link href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" rel="stylesheet"/>
-  <link href="style.css" rel="stylesheet"/>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;500&display=swap"
     rel="stylesheet"
@@ -56,6 +55,8 @@
       runLateScripts();
     }
   </script>
+
+  <link href="style.css" rel="stylesheet" />
 </head>
 
 <body class="w-100 min-vh-100">
@@ -151,7 +152,7 @@
 <div class="hero-section">
 <!--  <div id="quick-script" class="flex flex-column flex-row-l items-center">-->
   <div id="quick-script" class="mw8 center tc">
-      <div class="code-card center db" id="default-near">
+      <div id="quick-script-code" class="code-card center db" id="default-near">
         <span class="code-label-left">default iife</span>
         <button
           class="copy-button"
@@ -167,6 +168,25 @@
         </pre>
       </div>
   </div>
+  <!-- wasn't as straightforward to swap them -->
+  <!-- maybe get to later, or burn it no worries -->
+  <div class="hide-to-swap">
+    <div class="code-card center db" id="esm-link">
+      <span class="code-label-left">esm</span>
+      <button
+        class="copy-button"
+        data-clipboard-target="#near-esm"
+      >
+        Copy
+      </button>
+      <pre>
+          <code class="language-html" id="near-esm">
+
+&lt;script src="https://js.fastnear.com/near.mjs"&gt;&lt;/script&gt;
+          </code>
+        </pre>
+    </div>
+  </div>
   <div class="tc">
     <h2 class="f3 fw6 ttu tracked ma4 accent">Run Code in Dev Console</h2>
   </div>
@@ -181,25 +201,34 @@
 
 
         <ul id="compilations" class="list pl0 mw6 center">
-          <li id="compilation-iife" class="pa1 mb3 overflow-hidden">
+          <li id="compilation-iife" class="compilation selected pa1 mb3 overflow-hidden">
             <div class="pa1 bg-white ba b--black-10 br2 flex items-center justify-between">
               <div class="pa1">
-                <div class="f5"><a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE" target="_blank">IIFE</a></div>
+                <div class="f4"><a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE" target="_blank">IIFE</a></div>
                 <div class="pa1 f6 black-80">Immediately Invoked Function Expression</div>
-
               </div>
             </div>
           </li>
-          <li class="mb3 overflow-hidden">
-            <div class="pa3 bg-white ba b--black-10 br2 flex items-center justify-between">
-              <span class="f5 fw6 dark-gray">ESM</span>
-              <span class="f6 silver">ECMAScript Module</span>
+          <li id="compilation-esm" class="compilation mb3 overflow-hidden">
+            <div class="pa1 bg-white ba b--black-10 br2 flex items-center justify-between">
+              <div class="pa1 black">
+                <div class="f4 b">ESM</div>
+                <div class="pa1 f6 black-80">Modern ECMAScript</div>
+                <div class="code pa2 bg-light-gray br3">
+                  &lt;script src="https://js.fastnear.com/near.mjs"&gt;&lt;/script&gt;
+                </div>
+              </div>
             </div>
           </li>
-          <li class="mb3 overflow-hidden">
-            <div class="pa3 bg-white ba b--black-10 br2 flex items-center justify-between">
-              <span class="f5 fw6 dark-gray">CJS</span>
-              <span class="f6 silver">CommonJS</span>
+          <li id="compilation-cjs" class="compilation mb3 overflow-hidden">
+            <div class="pa1 bg-white ba b--black-10 br2 flex items-center justify-between">
+              <div class="pa1 black">
+                <div class="f4 b">CJS</div>
+                <div class="pa1 f6 black-80">CommonJS (Legacy, IoT…)</div>
+                <div class="code pa2 bg-light-gray br3">
+                  &lt;script src="https://js.fastnear.com/near.cjs"&gt;&lt;/script&gt;
+                </div>
+              </div>
             </div>
           </li>
         </ul>

@@ -578,15 +578,33 @@ BEGIN diverged from the example in the monorepo here, or tried
     color: rebeccapurple;
 }
 
-.hero-section .code-card, #compilation-iife {
+.hero-section .code-card {
     border: 5px solid yellow;
     border-radius: .25rem;
+}
+
+#quick-script {
+    height: 225px;
 }
 
 #quick-script .language-html {
     text-align: center;
     padding: 0.1rem;
     padding-left: 0.5rem;
+}
+
+#quick-script .code-card {
+    max-width: 700px;
+}
+
+.hide-to-swap {
+    visibility: hidden;
+    height: 0;
+}
+
+#compilations .compilation.selected {
+    border: 5px solid yellow;
+    border-radius: .6rem;
 }
 
 /*
