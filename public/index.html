@@ -150,21 +150,18 @@
 </div>
 
 <div class="hero-section">
-<!--  <div id="quick-script" class="flex flex-column flex-row-l items-center">-->
   <div id="quick-script" class="mw8 center tc">
-      <div id="quick-script-code" class="code-card center db" id="default-near">
+      <div id="quick-script-code" class="code-card center db">
         <span class="code-label-left">default iife</span>
         <button
           class="copy-button"
-          data-clipboard-target="#near-iife"
+          data-clipboard-text='<script src="https://js.fastnear.com/near.js"></script>'
         >
           Copy
         </button>
         <pre>
-          <code class="language-html" id="near-iife">
-
-&lt;script src="https://js.fastnear.com/near.js"&gt;&lt;/script&gt;
-          </code>
+          <code id="near-iife" class="language-html">
+&lt;script src="https://js.fastnear.com/near.js"&gt;&lt;/script&gt;</code>
         </pre>
       </div>
   </div>
@@ -224,7 +221,7 @@
             <div class="pa1 bg-white ba b--black-10 br2 flex items-center justify-between">
               <div class="pa1 black">
                 <div class="f4 b">CJS</div>
-                <div class="pa1 f6 black-80">CommonJS (Legacy, IoT…)</div>
+                <div class="pa1 f6 black-80">CommonJS (Legacy, limited devices…)</div>
                 <div class="code pa2 bg-light-gray br3">
                   &lt;script src="https://js.fastnear.com/near.cjs"&gt;&lt;/script&gt;
                 </div>
@@ -240,24 +237,21 @@
         Without Node.js-specific features (such as <code>Buffer.from</code>) the
         library can run in the browser’s developer console.
       </p>
-      <div class="img-container mt3">
+      <div class="img-container mv3">
         <img alt="dev console usage" src="assets/dev-console-usage.png"/>
       </div>
-      <div class="flex justify-center items-center pa4">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" width="260" height="80">
-          <rect x="0" y="0" width="60" height="50" rx="10" ry="10" fill="#e0e0e0" stroke="#aaa" stroke-width="2"/>
-          <rect x="100" y="0" width="60" height="50" rx="10" ry="10" fill="#e0e0e0" stroke="#aaa" stroke-width="2"/>
-          <rect x="200" y="0" width="60" height="50" rx="10" ry="10" fill="#e0e0e0" stroke="#aaa" stroke-width="2"/>
-          <circle cx="80" cy="24" r="10" fill="white" stroke="#aaa" stroke-width="2"/>
-          <circle cx="180" cy="24" r="10" fill="white" stroke="#aaa" stroke-width="2"/>
-          <text x="80" y="30" font-size="18" text-anchor="middle" font-family="monospace" font-weight="bold" fill="#444">+</text>
-          <text x="180" y="30" font-size="18" text-anchor="middle" font-family="monospace" font-weight="bold" fill="#444">+</text>
-          <text x="30" y="37" font-size="36" text-anchor="middle" font-family="monospace">⌘</text>
-          <text x="130" y="37" font-size="36" text-anchor="middle" font-family="monospace">⌥</text>
-          <text x="230" y="37" font-size="36" text-anchor="middle" font-family="monospace">i</text>
-        </svg>
+      <div id="rapid-prototyping" class="bg-near-white tc mw6-m mw8-l pv1 br3 center ph2">
+        <h2 class="pv1 mv1 fw6 f2 tracked-tight gradient-text">rapid prototyping with</h2>
+        <div class="tc">
+          <span class="pa2 f3 code tracked-tight br3">static html</span>
+        </div>
+        <div class="pa2 ma3">
+          <span class="f6 code pa0 ma0">like <a href="https://github.com/fastnear/js-alpha-landing-page" target="_blank">this very site</a></span>
+        </div>
+        <div id="semi-obvious-info" class="tl bg-mid-gray br3 pa1 mv2">
+          <p class="tracked-tight white lh-solid i">static sites are, of course, optional. this library loves Node.js, old and new</p>
+        </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -335,7 +329,7 @@
     </svg>
   </div>
   <div class="code-card center db" id="board-snippet">
-    <span class="code-label-left">Load Board&nbsp;<span class="normal pa2 lightest-blue">(View / query, no key needed)</span></span>
+    <span class="code-label-left">Load Board<span class="normal pa2 lightest-blue">(View / query, no key needed)</span></span>
     <button
       class="copy-button"
       data-clipboard-target="#board-code"
@@ -392,7 +386,7 @@ await near.view({
       </div>
       <div class="bg-offwhite br2">
         <div class="code-card center" id="draw-snippet">
-          <span class="code-label-left">Draw Pixel&nbsp;<span class="normal pa2 lightest-blue">(Sign and broadcast with session key)</span></span>
+          <span class="code-label-left">Draw Pixel<span class="normal pa2 lightest-blue">(Sign and broadcast with session key)</span></span>
           <button
             class="copy-button"
             data-clipboard-target="#draw-code"
@@ -452,7 +446,7 @@ await near.sendTx({
           </svg>
         </div>
         <div class="code-card center" id="balance-snippet">
-          <span class="code-label-left">Get Berry Club Account&nbsp;<span class="normal pa2 lightest-blue">(View / query, no key needed)</span></span>
+          <span class="code-label-left">Get Berry Club Account<span class="normal pa2 lightest-blue">(View / query, no key needed)</span></span>
           <button
             class="copy-button"
             data-clipboard-target="#balance-code"
@@ -469,7 +463,7 @@ await near.view({
 </code></pre>
         </div>
       </div>
-      <div class="mt2 mb1 f4">
+      <div class="mt2 mb1 pv3 f4 lh-copy">
         <h2>Beyond session keys</h2>
         <p style="text-align: left">
           Some actions (like transferring funds) require your <strong>full‐access key</strong>. That means this request will route to your chosen web3 wallet, instead of signing and broadcasting the transaction from the session key.
@@ -481,7 +475,7 @@ await near.view({
         </p>
         <div class="tc">
           <h4 class="tracked-tight code monospace f4 neon-text">
-            (privileged interactions get sent to wallet)
+            (privileged interactions are sent to wallet)
           </h4>
         </div>
       </div>
@@ -501,7 +495,7 @@ await near.view({
         </svg>
       </div>
       <div class="code-card center" id="buy-snippet">
-        <span class="code-label-left">Buy Tokens&nbsp;<span class="normal pa2 lightest-blue">(Cannot use session key)</span></span>
+        <span class="code-label-left">Buy Tokens<span class="normal pa2 lightest-blue">(Cannot use session key)</span></span>
         <button
           class="copy-button"
           data-clipboard-target="#buy-code"
