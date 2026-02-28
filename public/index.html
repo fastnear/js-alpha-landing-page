@@ -8,7 +8,7 @@
 
   <link href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" rel="stylesheet"/>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
     rel="stylesheet"
   />
 
@@ -130,7 +130,7 @@
   <!-- Desktop Version -->
   <div class="mw8 relative">
     <div class="dn db-l absolute top-0 ml4-l pl4-l transform-m">
-      <div class="bg-dark-green white f6 fw5 tracked ttu pv2 ph3 rotate-stamp">
+      <div class="btn-primary white f6 fw5 tracked ttu pv2 ph3 rotate-stamp">
         beta release
       </div>
     </div>
@@ -138,7 +138,7 @@
 
   <!-- Mobile Version -->
   <div class="db dn-l">
-    <div class="bg-dark-green white f6 fw5 tracked ttu pv1 ph2 mb3 dib">
+    <div class="btn-primary white f6 fw5 tracked ttu pv1 ph2 mb3 dib">
       beta release
     </div>
   </div>
@@ -155,25 +155,15 @@
   <div class="tc mb3">
     <div class="dib" id="near-el-board"></div>
   </div>
-  <div class="tc mb2">
-    <p class="ma4 f4 ph4 mb2">
+  <div class="mb2">
+    <p class="ma4 f5 ph4 mb2">
       This view call fetches lines populating the pixel board. No keys are required
       for view calls.
     </p>
-    <h4 class="tracked-tight code monospace f4 neon-text">
+    <h4 class="tracked-tight code monospace f5 neon-text tc">
       (paste code in browser dev console)
     </h4>
 
-  </div>
-  <div class="tc">
-    <svg
-      class="snippet-arrow"
-      id="board-arrow"
-      data-target="board-snippet"
-      viewBox="0 0 100 66"
-    >
-      <path d="M50 0 L80 40 L20 40 Z"></path>
-    </svg>
   </div>
   <div class="code-card center db" id="board-snippet">
     <span class="code-label-left">Load Board<span class="normal pa2 lightest-blue">(View / query, no key needed)</span></span>
@@ -201,34 +191,24 @@ await near.view({
   </div>
   <div class="app-card pa4">
     <div class="mb3">
-      <p class="mb3 f4">Minimal example of signing and broadcasting a smart contract call to the
+      <p class="mb3 f5">Minimal example of signing and broadcasting a smart contract call to the
         <code>draw</code> method.
       </p>
-      <p class=”mb4 f4”>
+      <p class=”mb4 f5”>
         You must be signed in to draw. Click “Sign In” to connect your wallet.
       </p>
       <div class="tc">
-        <h4 class="tracked-tight code monospace f4 neon-text">
+        <h4 class="tracked-tight code monospace f5 neon-text tc">
           (open dev console to track progress)
         </h4>
       </div>
     </div>
     <div class="mb3">
       <div class="tc">
-        <button class="f4 fw6 ttu tracked link pv3 ph4 white bg-dark-green hover-bg-green br2 pointer mb3 action-button"
+        <button class="f4 fw6 ttu tracked link pv3 ph4 white btn-primary br2 pointer mb3 action-button"
                 id="draw-pixel">
-          Draw Green Pixel
+          Draw (random) Green Pixel
         </button>
-      </div>
-      <div class="tc">
-        <svg
-          class="snippet-arrow"
-          id="draw-arrow"
-          data-target="draw-snippet"
-          viewBox="0 0 100 66"
-        >
-          <path d="M50 0 L80 40 L20 40 Z"></path>
-        </svg>
       </div>
       <div class="bg-offwhite br2">
         <div class="code-card center" id="draw-snippet">
@@ -266,7 +246,7 @@ await nearWallet.sendTransaction({
       </div>
 
       <div class="mt3 mb2">
-        <p class="mb4 f4 mt4">
+        <p class="mb4 f5 mt4">
           Fetching this account’s <code>avocado_balance</code> from the BerryClub contract.
         </p>
         <div class="flex justify-center pa2">
@@ -284,16 +264,6 @@ await nearWallet.sendTransaction({
             </tr>
             </tbody>
           </table>
-        </div>
-        <div class="tc">
-          <svg
-            class="snippet-arrow"
-            id="balance-arrow"
-            data-target="balance-snippet"
-            viewBox="0 0 100 66"
-          >
-            <path d="M50 0 L80 40 L20 40 Z"></path>
-          </svg>
         </div>
         <div class="code-card center" id="balance-snippet">
           <span class="code-label-left">Get Berry Club Account<span class="normal pa2 lightest-blue">(View / query, no key needed)</span></span>
@@ -313,7 +283,7 @@ await near.view({
 </code></pre>
         </div>
       </div>
-      <div class="mt2 mb1 pv3 f4 lh-copy">
+      <div class="mt2 mb1 pv3 f5 lh-copy">
         <h2>Buying tokens</h2>
         <p style="text-align: left">
           You can also call contract methods that require a deposit. All transactions are signed through your connected wallet.
@@ -325,20 +295,8 @@ await near.view({
           <a href="https://docs.fastnear.com/docs/transaction-flow" target="_blank">Transaction Flow</a>
         </p>
       </div>
-      <div class="tc mt4">
-        <div class="tc">
-          <button class="f4 fw6 ttu tracked link pv3 ph4 white bg-dark-green hover-bg-green br2 pointer action-button" id="buy-tokens">Buy 25 🥑</button>
-        </div>
-      </div>
-      <div class="tc">
-        <svg
-          class="snippet-arrow"
-          id="buy-arrow"
-          data-target="buy-snippet"
-          viewBox="0 0 100 66"
-        >
-          <path d="M50 0 L80 40 L20 40 Z"></path>
-        </svg>
+      <div class="tc mv4">
+        <button class="f4 fw6 ttu tracked link pv3 ph4 white btn-primary br2 pointer action-button" id="buy-tokens">Buy 25 🥑</button>
       </div>
       <div class="code-card center" id="buy-snippet">
         <span class="code-label-left">Buy Tokens<span class="normal pa2 lightest-blue">(Requires deposit)</span></span>
@@ -370,6 +328,8 @@ await nearWallet.sendTransaction({
     </div>
   </div>
 </div>
+
+<footer class="site-footer">&copy; 2026 FastNear</footer>
 
 </body>
 </html>
