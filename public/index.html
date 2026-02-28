@@ -22,12 +22,13 @@
 
   <!-- near script, goes to latest version published to npm -->
   <script src="https://unpkg.com/@fastnear/api/dist/umd/browser.global.js"></script>
+  <!-- wallet connector for multi-wallet sign-in -->
+  <script src="https://unpkg.com/@fastnear/wallet/dist/umd/browser.global.js"></script>
 
-  <!--  you cannot split up files easily with static html sites, so await import is great-->
   <script type="module">
     /** @type { import("https://unpkg.com/@fastnear/api/dist/esm/index.d.ts") } */
     /* global near */
-    await import("https://unpkg.com/@fastnear/api/dist/umd/browser.global.js");
+    /** @type { import("https://unpkg.com/@fastnear/wallet/dist/esm/index.d.ts") } */
 
     import { wireUpAppEarly, wireUpAppLate } from "./index.js";
 
@@ -61,7 +62,7 @@
 
 <body class="w-100 min-vh-100">
 
-<div class="nav-container pt1">
+<div class="nav-container pv2">
   <div class="nav-content mw8 center relative">
     <div class="tc ma2">
       <a
@@ -119,7 +120,7 @@
         @fastnear/api
       </a>
     </div>
-    <div id="auth" class="user-info pointer">
+    <div id="auth" class="user-info">
       <!-- JS injects sign in or account info -->
     </div>
   </div>
@@ -130,7 +131,7 @@
   <div class="mw8 relative">
     <div class="dn db-l absolute top-0 ml4-l pl4-l transform-m">
       <div class="bg-dark-green white f6 fw5 tracked ttu pv2 ph3 rotate-stamp">
-        alpha release
+        beta release
       </div>
     </div>
   </div>
@@ -138,187 +139,33 @@
   <!-- Mobile Version -->
   <div class="db dn-l">
     <div class="bg-dark-green white f6 fw5 tracked ttu pv1 ph2 mb3 dib">
-      alpha release
+      beta release
     </div>
   </div>
 
-  <h1 class="f-headline-l f1 mt1 lh-solid near-cursor mb4">NEAR</h1>
+  <h1 class="f1 mt1 lh-solid near-cursor mb4">FastNear</h1>
 
   <p class="f3 mb2 lh-copy o-80">
     api to interact with the NEAR blockchain
   </p>
 </div>
 
-<div class="hero-section">
-  <div id="quick-script" class="mw8 center tc">
-      <div id="quick-script-code" class="code-card center db">
-        <span class="code-label-left">default iife</span>
-        <button
-          class="copy-button"
-          data-clipboard-text='<script src="https://js.fastnear.com/near.js"></script>'
-        >
-          Copy
-        </button>
-        <pre>
-          <code id="near-iife" class="language-html">
-&lt;script src="https://js.fastnear.com/near.js"&gt;&lt;/script&gt;</code>
-        </pre>
-      </div>
-  </div>
-  <!-- wasn't as straightforward to swap them -->
-  <!-- maybe get to later, or burn it no worries -->
-  <div class="hide-to-swap">
-    <div class="code-card center db" id="esm-link">
-      <span class="code-label-left">esm</span>
-      <button
-        class="copy-button"
-        data-clipboard-target="#near-esm"
-      >
-        Copy
-      </button>
-      <pre>
-          <code class="language-html" id="near-esm">
-
-&lt;script src="https://js.fastnear.com/near.mjs"&gt;&lt;/script&gt;
-          </code>
-        </pre>
-    </div>
-  </div>
-  <div class="tc">
-    <h2 class="f3 fw6 ttu tracked ma4 accent">Run Code in Dev Console</h2>
-  </div>
-
-  <div class="hero-grid">
-    <div class="hero-content ph2">
-      <div class="bg-near-black ba b--mid-gray br3 pa3 mw6 center">
-        <h3 class="f4 white o-80 mt1">JavaScript Compilation Targets</h3>
-        <p class="f6 dark-gray mb3">
-          Optimize your app for your environment.
-        </p>
-
-
-        <ul id="compilations" class="list pl0 mw6 center">
-          <li id="compilation-iife" class="compilation selected pa1 mb3 overflow-hidden">
-            <div class="pa1 bg-white ba b--black-10 br2 flex items-center justify-between">
-              <div class="pa1">
-                <div class="f4"><a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE" target="_blank">IIFE</a></div>
-                <div class="pa1 f6 black-80">Immediately Invoked Function Expression</div>
-              </div>
-            </div>
-          </li>
-          <li id="compilation-esm" class="compilation mb3 overflow-hidden">
-            <div class="pa1 bg-white ba b--black-10 br2 flex items-center justify-between">
-              <div class="pa1 black">
-                <div class="f4 b">ESM</div>
-                <div class="pa1 f6 black-80">Modern ECMAScript</div>
-                <div class="code pa2 bg-light-gray br3">
-                  &lt;script src="https://js.fastnear.com/near.mjs"&gt;&lt;/script&gt;
-                </div>
-              </div>
-            </div>
-          </li>
-          <li id="compilation-cjs" class="compilation mb3 overflow-hidden">
-            <div class="pa1 bg-white ba b--black-10 br2 flex items-center justify-between">
-              <div class="pa1 black">
-                <div class="f4 b">CJS</div>
-                <div class="pa1 f6 black-80">CommonJS (Legacy, limited devices…)</div>
-                <div class="code pa2 bg-light-gray br3">
-                  &lt;script src="https://js.fastnear.com/near.cjs"&gt;&lt;/script&gt;
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="hero-image">
-      <p class="f5 o-90">
-        Without Node.js-specific features (such as <code>Buffer.from</code>) the
-        library can run in the browser’s developer console.
-      </p>
-      <div class="img-container mv3">
-        <img alt="dev console usage" src="assets/dev-console-usage.png"/>
-      </div>
-      <div id="rapid-prototyping" class="bg-near-white tc mw6-m mw8-l pv1 br3 center ph2">
-        <h2 class="pv1 mv1 fw6 f2 tracked-tight gradient-text">rapid prototyping with</h2>
-        <div class="tc">
-          <span class="pa2 f3 code tracked-tight br3">static html</span>
-        </div>
-        <div class="pa2 ma3">
-          <span class="f6 code pa0 ma0">like <a href="https://github.com/fastnear/js-alpha-landing-page" target="_blank">this very site</a></span>
-        </div>
-        <div id="semi-obvious-info" class="tl bg-mid-gray br3 pa1 mv2">
-          <p class="tracked-tight white lh-solid i">static sites are, of course, optional. this library loves Node.js, old and new</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section id="demo" class="relative min-vh-50 pv4">
-  <h1 class="f1-ns fw8 mb4 mt2 navy pl5-l pl4-m pl1-ns">Berry Club demo</h1>
-  <div class="mw9 center ph4-ns demo-inner">
-
-    <div class="bg-black-70 hover-bg-black-80 pa4 br2 shadow-3 flex flex-column flex-row-l items-center bg-transition">
-
-      <div class="w-100 w-80-m w-40-l flex flex-column items-center mb4">
-        <div class="transform-wrapper mb4">
-          <div class="br3 pa1 bg-white-30 shadow-4 transform-content z-3 relative">
-            <img
-              src="assets/berry-club-screenshot.png"
-              class="w-100 br2"
-              alt="Berry Club Interface">
-          </div>
-        </div>
-        <a href="https://berryclub.io" target="_blank">
-          <button class="f4 fw2 link ttu white bg-blue pointer pv3 ph4 br2 hover-bg-dark-blue hover-white grow">
-            Visit site
-          </button>
-        </a>
-      </div>
-
-      <div class="w-100 w-80-m w-60-l pl4-l tc flex flex-column items-center">
-        <div class="bg-white-90 ph2 mb3">
-          <h2 class="fun-tech f4 white-90 mb3">
-            Wait, what's <a href="https://github.com/evgenykuzyakov/berryclub" target="_blank">Berry Club?</a>
-          </h2>
-        </div>
-        <div class="ttl tl blockquote-card-subtle pa3 mb4 mt3">
-          <blockquote class="ma0 pl2 pt0 mv3">
-            <p class="f4 lh-copy i mt0 washed-yellow">
-              "Berry Club is one of the oldest and certainly most engaging smart contracts on the NEAR blockchain…
-            </p>
-            <p class="f4 lh-copy white-70 i mt0 washed-yellow">It's a crazy mix between a chat room and graffiti wall."</p>
-          </blockquote>
-        </div>
-        <a href="https://near.org/blog/berry-club-part-ii" target="_blank">
-          <button class="f4 fw2 link ttu white bg-blue pointer pv3 ph4 br2 hover-bg-dark-blue hover-white grow">
-            NEAR Blog
-          </button>
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="center ph3 pv4">
+<div class="center ph4 pv4">
   <h1 class="f1-ns fw8 mb4 mt2 white pl5-l pl4-m pl1-ns">try it:</h1>
-  <div class="tc mb2">
+  <div class="tc mb3">
     <div class="dib" id="near-el-board"></div>
   </div>
-  <div class="tc mb1">
-    <p class="ma4 f4 ph4 mb1">
+  <div class="tc mb2">
+    <p class="ma4 f4 ph4 mb2">
       This view call fetches lines populating the pixel board. No keys are required
       for view calls.
     </p>
     <h4 class="tracked-tight code monospace f4 neon-text">
-      (paste code in dev console)
+      (paste code in browser dev console)
     </h4>
 
   </div>
-  <div class="tc mb1">
+  <div class="tc">
     <svg
       class="snippet-arrow"
       id="board-arrow"
@@ -353,13 +200,12 @@ await near.view({
 </code></pre>
   </div>
   <div class="app-card pa4">
-    <div class="mb1">
+    <div class="mb3">
       <p class="mb3 f4">Minimal example of signing and broadcasting a smart contract call to the
         <code>draw</code> method.
       </p>
-      <p class="mb4 f4">
-        You must be “signed in” to draw, which means using one of your full‐access
-        keys to create a session key.
+      <p class=”mb4 f4”>
+        You must be signed in to draw. Click “Sign In” to connect your wallet.
       </p>
       <div class="tc">
         <h4 class="tracked-tight code monospace f4 neon-text">
@@ -367,14 +213,14 @@ await near.view({
         </h4>
       </div>
     </div>
-    <div class="mb2">
+    <div class="mb3">
       <div class="tc">
-        <button class="f3 fw6 ttu tracked-mega link pv3 ph4 white bg-dark-green hover-bg-green br2 pointer mb1 action-button"
+        <button class="f4 fw6 ttu tracked link pv3 ph4 white bg-dark-green hover-bg-green br2 pointer mb3 action-button"
                 id="draw-pixel">
           Draw Green Pixel
         </button>
       </div>
-      <div class="tc mt1">
+      <div class="tc">
         <svg
           class="snippet-arrow"
           id="draw-arrow"
@@ -386,7 +232,7 @@ await near.view({
       </div>
       <div class="bg-offwhite br2">
         <div class="code-card center" id="draw-snippet">
-          <span class="code-label-left">Draw Pixel<span class="normal pa2 lightest-blue">(Sign and broadcast with session key)</span></span>
+          <span class="code-label-left">Draw Pixel<span class="normal pa2 lightest-blue">(Sign and broadcast)</span></span>
           <button
             class="copy-button"
             data-clipboard-target="#draw-code"
@@ -394,21 +240,25 @@ await near.view({
             Copy
           </button>
           <pre><code class="language-javascript" id="draw-code">
-await near.sendTx({
+await nearWallet.sendTransaction({
+  signerId: nearWallet.accountId(),
   receiverId: "berryclub.ek.near",
   actions: [
-    near.actions.functionCall({
-      methodName: "draw",
-      args: {
-        pixels: [{
-          x: 10,
-          y: 20,
-          color: 65280, // decimal for green
-        }],
+    {
+      type: "FunctionCall",
+      params: {
+        methodName: "draw",
+        args: {
+          pixels: [{
+            x: 10,
+            y: 20,
+            color: 65280, // green
+          }],
+        },
+        gas: $$`100 Tgas`,
+        deposit: "0",
       },
-      gas: $$`100 Tgas`, // default 225 teragas
-      deposit: "0", // default 0 yoctoNEAR
-    }),
+    },
   ],
 });
 </code></pre>
@@ -423,19 +273,19 @@ await near.sendTx({
           <table class="token-table mw6 mh3">
             <tbody>
             <tr class="bg-dark-gray">
-              <td class="pa2 near-white">Total Supply:</td>
-              <td class="pa2 tr" id="total-supply">2417099.3688 🥑</td>
+              <td class="pa3 near-white">Total Supply:</td>
+              <td class="pa3 tr" id="total-supply">2417099.3688 🥑</td>
             </tr>
             <tr class="bg-dark-gray">
-              <td class="pa2 near-white">Your Balance:</td>
-              <td class="pa2 tr flex items-center justify-end">
+              <td class="pa3 near-white">Your Balance:</td>
+              <td class="pa3 tr flex items-center justify-end">
                 <span class="mr1" id="your-balance">1583.7318 🥑</span>
               </td>
             </tr>
             </tbody>
           </table>
         </div>
-        <div class="tc mt2 mb1">
+        <div class="tc">
           <svg
             class="snippet-arrow"
             id="balance-arrow"
@@ -458,33 +308,29 @@ await near.sendTx({
 await near.view({
   contractId: "berryclub.ek.near",
   methodName: "get_account",
-  args: { account_id: near.accountId() },
+  args: { account_id: nearWallet.accountId() },
 });
 </code></pre>
         </div>
       </div>
       <div class="mt2 mb1 pv3 f4 lh-copy">
-        <h2>Beyond session keys</h2>
+        <h2>Buying tokens</h2>
         <p style="text-align: left">
-          Some actions (like transferring funds) require your <strong>full‐access key</strong>. That means this request will route to your chosen web3 wallet, instead of signing and broadcasting the transaction from the session key.
+          You can also call contract methods that require a deposit. All transactions are signed through your connected wallet.
         </p>
         <p>
-          Learn more about access keys: <a href="https://docs.near.org/concepts/protocol/access-keys" target="_blank">
-          NEAR documentation
-        </a>
+          Learn more about NEAR transactions:
+          <a href="https://docs.near.org/protocol/transactions" target="_blank">NEAR documentation</a>
+          |
+          <a href="https://docs.fastnear.com/docs/transaction-flow" target="_blank">Transaction Flow</a>
         </p>
+      </div>
+      <div class="tc mt4">
         <div class="tc">
-          <h4 class="tracked-tight code monospace f4 neon-text">
-            (privileged interactions are sent to wallet)
-          </h4>
+          <button class="f4 fw6 ttu tracked link pv3 ph4 white bg-dark-green hover-bg-green br2 pointer action-button" id="buy-tokens">Buy 25 🥑</button>
         </div>
       </div>
-      <div class="tc mt3">
-        <div class="tc">
-          <button class="f3 fw6 ttu tracked-mega link pv3 ph4 white bg-dark-green hover-bg-green br2 pointer action-button" id="buy-tokens">Buy 25 🥑</button>
-        </div>
-      </div>
-      <div class="tc mt2 mb1">
+      <div class="tc">
         <svg
           class="snippet-arrow"
           id="buy-arrow"
@@ -495,7 +341,7 @@ await near.view({
         </svg>
       </div>
       <div class="code-card center" id="buy-snippet">
-        <span class="code-label-left">Buy Tokens<span class="normal pa2 lightest-blue">(Cannot use session key)</span></span>
+        <span class="code-label-left">Buy Tokens<span class="normal pa2 lightest-blue">(Requires deposit)</span></span>
         <button
           class="copy-button"
           data-clipboard-target="#buy-code"
@@ -504,15 +350,19 @@ await near.view({
           Copy
         </button>
         <pre><code class="language-javascript" id="buy-code">
-await near.sendTx({
+await nearWallet.sendTransaction({
+  signerId: nearWallet.accountId(),
   receiverId: "berryclub.ek.near",
   actions: [
-    near.actions.functionCall({
-      methodName: "buy_tokens",
-      args: {},
-      gas: $$`100 Tgas`,
-      deposit: $$`0.1 NEAR`,
-    }),
+    {
+      type: "FunctionCall",
+      params: {
+        methodName: "buy_tokens",
+        args: {},
+        gas: $$`100 Tgas`,
+        deposit: $$`0.1 NEAR`,
+      },
+    },
   ],
 });
 </code></pre>

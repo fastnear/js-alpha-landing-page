@@ -114,11 +114,13 @@ a:visited {
     background: black;
     color: var(--accent);
     border: 1px solid var(--accent);
-    border-radius: 0;
-    padding: 0.5rem;
+    border-radius: 4px;
+    padding: 0.625rem 1rem;
     width: 100%;
-    transition: all 0.2s ease;
+    transition: background-color 0.15s ease, color 0.15s ease;
     cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
 }
 
 .signout-button:hover {
@@ -130,39 +132,69 @@ a:visited {
     position: fixed;
     top: 1rem;
     right: 1rem;
-    background: black;
-    border-radius: 0;
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    display: flex;
-    flex-direction: column;
+    z-index: 9999;
+}
+
+.auth-pill {
+    display: inline-flex;
+    align-items: center;
     gap: 0.5rem;
-    transition: all 0.2s ease;
-    z-index: 1000;
-}
-
-.user-info .user-name {
-    color: var(--text);
-    font-weight: 600;
-    padding: 0.25rem 0;
-}
-
-.user-info.expanded {
-    padding: 1rem 0.9rem
-}
-
-.user-info.collapsed {
-    padding: 1rem;
-    width: auto;
-    overflow: hidden;
-}
-
-.user-info.collapsed .signout-button {
-    display: none;
-}
-
-.user-info {
+    padding: 0.75rem 1rem;
+    min-width: 8rem;
+    justify-content: center;
+    background: black;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    z-index: 9999 !important;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    font-size: inherit;
+    font-family: inherit;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+    animation: auth-fade-in 0.2s ease both;
+}
+
+@keyframes auth-fade-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.auth-pill:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.auth-pill.auth-signin {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--card-bg);
+}
+
+.auth-pill.auth-signin:hover {
+    background: #8affeb;
+    border-color: #8affeb;
+}
+
+.auth-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0;
+    background: black;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem;
+    min-width: 100%;
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+#auth.open .auth-dropdown {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .app-card {
@@ -174,6 +206,23 @@ a:visited {
     border: 1px solid rgba(100, 255, 218, 0.1);
 }
 
+.app-card a {
+    color: var(--accent);
+    transition: color 0.15s ease;
+}
+
+.app-card a:visited {
+    color: #a0ffe5;
+}
+
+.app-card a:hover {
+    color: #8affeb;
+}
+
+.app-card a:active {
+    color: #40c8a8;
+}
+
 .pixel {
     width: 8px;
     height: 8px;
@@ -182,7 +231,7 @@ a:visited {
 }
 
 .pixel:hover {
-    transform: scale(1.5);
+    transform: scale(1.2);
     z-index: 1;
 }
 
@@ -196,7 +245,7 @@ a:visited {
     border: 2px solid #366;
     border-radius: 3px;
     position: relative;
-    padding-top: 10px;
+    padding-top: 2.25rem;
     transition: opacity 0.3s ease;
     color: #eee;
     max-width: 850px;
@@ -268,6 +317,8 @@ a:visited {
     transition: transform 0.3s ease, fill 0.3s ease;
     cursor: pointer;
     margin-left: 0.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
 }
 
 .snippet-arrow.rotated {
@@ -363,27 +414,11 @@ a:visited {
 }
 
 .transform-wrapper {
-    perspective: 1666px;
     z-index: 1;
     max-width: 80%;
 }
 .transform-content {
-    transform:
-            translateX(5%)
-            translateY(3%)
-            rotateY(15deg)
-            rotateX(-5deg);
-    transform-origin: left center;
-    transition: transform 0.4s ease-out;
     position: relative;
-}
-.transform-content:hover {
-    transform:
-            translateX(2%)
-            translateY(1%)
-            rotateY(10deg)
-            rotateX(-3deg)
-            scale(1.1);
 }
 
 #demo {
@@ -408,12 +443,12 @@ a:visited {
     inset: 19px;
     background: linear-gradient(
             165deg,
-            rgba(255, 255, 255, 0.6) 3%,
-            rgba(255, 255, 255, 0.2) 33%,
-            rgba(255, 255, 255, 0.1) 60%
+            rgba(255, 255, 255, 0.3) 3%,
+            rgba(255, 255, 255, 0.1) 33%,
+            rgba(255, 255, 255, 0.05) 60%
     );
     border-radius: 16px;
-    backdrop-filter: blur(6px) brightness(130%) saturate(190%);
+    backdrop-filter: blur(6px) brightness(110%) saturate(120%);
     z-index: -1;
 }
 
@@ -424,10 +459,10 @@ a:visited {
 }
 
 .demo-inner a {
-    color: deeppink;
+    color: var(--accent);
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease;
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -452,7 +487,7 @@ a:visited {
 }
 
 .demo-inner a:visited {
-    color: darkviolet;
+    color: #a0ffe5;
 }
 
 .demo-inner a[href*="github.com"] {
@@ -510,51 +545,33 @@ code {
 }
 
 .neon-text {
-    text-shadow: 0 0 1px #00ffa2, 0 0 0 #00ffa2, 0 0 1px #00a2ff;
-    animation: subtleNeon 3s ease-in-out 1 alternate-reverse;
-    letter-spacing: 0.2rem;
+    color: var(--accent);
+    letter-spacing: 0.1rem;
 }
 
-#auth.expanded .account-name {
-    padding-bottom: 1.3rem;
-    position: relative;
+.action-button:disabled {
+    opacity: 0.5;
+    cursor: wait;
 }
 
-#auth.expanded .account-name::after {
-    content: "⬇";
-    font-size: 0.666rem;
-    color: #eee;
-    position: absolute;
-    left: 50%;
-    top: 66%;
+.btn-hint {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+    opacity: 0.8;
+    margin-top: 0.25rem;
 }
 
-#auth.expanded .account-name:hover::after {
-    opacity: 0.9;
-}
 
-#auth .near-contract:hover, #auth .near-public-key:hover {
-    scale: 1.05;
-    transition: scale 0.3s ease-in-out;
-}
-
-@keyframes subtleNeon {
-    0% {
-        text-shadow: 0 0 1px #00ffa2, 0 0 0 #00ffa2, 0 0 1px #00a2ff;
-        letter-spacing: 0.2rem;
-    }
-    50% {
-        text-shadow: 0 0 0 #00ffa2, 0 0 1px #00ffa2, 0 0 0 #00a2ff;
-        letter-spacing: 0.21rem;
-    }
-    100% {
-        text-shadow: 0 0 1px #00ffa2, 0 0 0 #00ffa2, 0 0 1px #00a2ff;
-        letter-spacing: 0.2rem;
-    }
-}
+/* neon animation removed — .neon-text is now static accent color */
 
 .grow {
-    transform: scale(1.06);
+    transition: transform 0.15s ease;
+}
+.grow:hover {
+    transform: scale(1.03);
 }
 
 .square-initial {
@@ -581,7 +598,7 @@ BEGIN diverged from the example in the monorepo here, or tried
 }
 
 .hero-section .code-card {
-    border: 5px solid yellow;
+    border: 2px solid var(--accent);
     border-radius: .25rem;
 }
 
@@ -608,21 +625,31 @@ BEGIN diverged from the example in the monorepo here, or tried
 }
 
 #compilations .compilation.selected {
-    border: 5px solid yellow;
-    border-radius: .6rem;
+    border: 2px solid var(--accent);
+    border-radius: .5rem;
 }
 
 #rapid-prototyping {
     border: 1px solid rgba(238, 238, 238, 0.3);
 }
 
+#rapid-prototyping a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+#rapid-prototyping a:visited {
+    color: #a0ffe5;
+}
+
 #semi-obvious-info  p {
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .gradient-text {
-    background: linear-gradient(90deg, #ff7eb3, #ffbf69, #ff9a8b);
+    background: linear-gradient(90deg, #64ffda, #a0d8ef);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -673,7 +700,15 @@ END diverged from the example in the monorepo here, or tried
         inset: 0;
     }
     .hero-section {
-        padding: 0.666rem;
+        padding: 1rem;
+        min-width: 0;
+    }
+    .hero-image .img-container {
+        min-width: 0;
+    }
+    .code-card {
+        min-width: 0;
+        max-width: 100%;
     }
     .code-label-left {
         max-width: 60%;
