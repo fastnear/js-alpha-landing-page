@@ -21,14 +21,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
 
   <!-- near script, goes to latest version published to npm -->
-  <script src="https://unpkg.com/@fastnear/api/dist/umd/browser.global.js"></script>
+  <script src="https://js.fastnear.com/near.js"></script>
   <!-- wallet connector for multi-wallet sign-in -->
-  <script src="https://unpkg.com/@fastnear/wallet/dist/umd/browser.global.js"></script>
+  <script src="https://js.fastnear.com/wallet.js"></script>
 
   <script type="module">
-    /** @type { import("https://unpkg.com/@fastnear/api/dist/esm/index.d.ts") } */
+    /** @type { import("https://js.fastnear.com/types.js") } */
     /* global near */
-    /** @type { import("https://unpkg.com/@fastnear/wallet/dist/esm/index.d.ts") } */
+    /** @type { import("https://js.fastnear.com/wallet-types.js") } */
 
     import { wireUpAppEarly, wireUpAppLate } from "./index.js";
 
