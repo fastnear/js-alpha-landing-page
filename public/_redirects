@@ -10,3 +10,35 @@
 /types-cjs.js https://unpkg.com/@fastnear/api/dist/cjs/index.d.cts 301
 /types.mjs https://unpkg.com/@fastnear/api/dist/esm/index.d.ts 301
 /types.cjs https://unpkg.com/@fastnear/api/dist/cjs/index.d.cts 301
+
+# @fastnear/wallet
+/wallet.js         https://unpkg.com/@fastnear/wallet/dist/umd/browser.global.js 301
+/wallet-iife.js    https://unpkg.com/@fastnear/wallet/dist/umd/browser.global.js 301
+/wallet-umd.js     https://unpkg.com/@fastnear/wallet/dist/umd/browser.global.js 301
+/wallet-esm.js     https://unpkg.com/@fastnear/wallet/dist/esm/index.js 301
+/wallet-cjs.js     https://unpkg.com/@fastnear/wallet/dist/cjs/index.cjs 301
+/wallet.mjs        https://unpkg.com/@fastnear/wallet/dist/esm/index.js 301
+/wallet.cjs        https://unpkg.com/@fastnear/wallet/dist/cjs/index.cjs 301
+/wallet-types.js   https://unpkg.com/@fastnear/wallet/dist/esm/index.d.ts 301
+/wallet-types.mjs  https://unpkg.com/@fastnear/wallet/dist/esm/index.d.ts 301
+/wallet-types.cjs  https://unpkg.com/@fastnear/wallet/dist/cjs/index.d.cts 301
+
+# @fastnear/utils
+/utils.js         https://unpkg.com/@fastnear/utils/dist/umd/browser.global.js 301
+/utils-iife.js    https://unpkg.com/@fastnear/utils/dist/umd/browser.global.js 301
+/utils-umd.js     https://unpkg.com/@fastnear/utils/dist/umd/browser.global.js 301
+/utils-esm.js     https://unpkg.com/@fastnear/utils/dist/esm/index.js 301
+/utils-cjs.js     https://unpkg.com/@fastnear/utils/dist/cjs/index.cjs 301
+/utils.mjs        https://unpkg.com/@fastnear/utils/dist/esm/index.js 301
+/utils.cjs        https://unpkg.com/@fastnear/utils/dist/cjs/index.cjs 301
+/utils-types.js   https://unpkg.com/@fastnear/utils/dist/esm/index.d.ts 301
+/utils-types.mjs  https://unpkg.com/@fastnear/utils/dist/esm/index.d.ts 301
+/utils-types.cjs  https://unpkg.com/@fastnear/utils/dist/cjs/index.d.cts 301
+
+# @fastnear/near-connect
+/near-connect.js       https://unpkg.com/@fastnear/near-connect/cdn/hot-connect.iife.js 301
+/near-connect-iife.js  https://unpkg.com/@fastnear/near-connect/cdn/hot-connect.iife.js 301
+/near-connect-esm.js   https://unpkg.com/@fastnear/near-connect/cdn/hot-connect.es.js 301
+/near-connect-cjs.js   https://unpkg.com/@fastnear/near-connect/cdn/hot-connect.cjs.js 301
+/near-connect.mjs      https://unpkg.com/@fastnear/near-connect/cdn/hot-connect.es.js 301
+/near-connect.cjs      https://unpkg.com/@fastnear/near-connect/cdn/hot-connect.cjs.js 301
