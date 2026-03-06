@@ -176,7 +176,7 @@ export function wireUpAppLate() {
               params: {
                 methodName: "buy_tokens",
                 gas: cu("100 Tgas"),
-                deposit: cu("0.1 NEAR"),
+                deposit: cu("0.01 NEAR"),
                 args: {},
               },
             },
