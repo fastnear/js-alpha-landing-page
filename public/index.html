@@ -11,18 +11,11 @@
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
     rel="stylesheet"
   />
+  <link href="https://unpkg.com/@speed-highlight/core@1.2.14/dist/themes/github-dark.css" rel="stylesheet"/>
 
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
-    rel="stylesheet"
-  />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
-
-  <!-- near script, goes to latest version published to npm -->
+  <!-- @fastnear/api UMD via js.fastnear.com _redirects -->
   <script src="https://js.fastnear.com/near.js"></script>
-  <!-- wallet connector for multi-wallet sign-in -->
+  <!-- @fastnear/wallet UMD via js.fastnear.com _redirects -->
   <script src="https://js.fastnear.com/wallet.js"></script>
 
   <script type="module">
@@ -31,6 +24,7 @@
     /** @type { import("https://js.fastnear.com/wallet-types.js") } */
 
     import { wireUpAppEarly, wireUpAppLate } from "./index.js";
+    import { highlightAll } from "https://unpkg.com/@speed-highlight/core@1.2.14/dist/index.js";
 
     // set up the near configuration and anything else you told your app to do in this function
     wireUpAppEarly();
@@ -39,12 +33,17 @@
     const runLateScripts = () => {
       wireUpAppLate();
 
-      const clipboard = new ClipboardJS(".copy-button");
-      clipboard.on('success', (e) => {
-        e.clearSelection();
-        const target = e.trigger;
-        target.style.opacity = '0.7';
-        setTimeout(() => target.style.opacity = '1', 200);
+      highlightAll();
+
+      document.querySelectorAll(".copy-button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetSel = btn.getAttribute("data-clipboard-target");
+          const text = document.querySelector(targetSel)?.textContent ?? "";
+          navigator.clipboard.writeText(text).then(() => {
+            btn.style.opacity = "0.7";
+            setTimeout(() => (btn.style.opacity = "1"), 200);
+          });
+        });
       });
     }
 
@@ -173,7 +172,7 @@
     >
       Copy
     </button>
-    <pre><code class="language-javascript" id="board-code">
+    <pre><code class="shj-lang-js" id="board-code">
 await near.view({
   contractId: "berryclub.ek.near",
   methodName: "get_lines",
@@ -219,7 +218,7 @@ await near.view({
           >
             Copy
           </button>
-          <pre><code class="language-javascript" id="draw-code">
+          <pre><code class="shj-lang-js" id="draw-code">
 await nearWallet.sendTransaction({
   signerId: nearWallet.accountId(),
   receiverId: "berryclub.ek.near",
@@ -274,7 +273,7 @@ await nearWallet.sendTransaction({
           >
             Copy
           </button>
-          <pre><code class="language-javascript" id="balance-code">
+          <pre><code class="shj-lang-js" id="balance-code">
 await near.view({
   contractId: "berryclub.ek.near",
   methodName: "get_account",
@@ -307,7 +306,7 @@ await near.view({
         >
           Copy
         </button>
-        <pre><code class="language-javascript" id="buy-code">
+        <pre><code class="shj-lang-js" id="buy-code">
 await nearWallet.sendTransaction({
   signerId: nearWallet.accountId(),
   receiverId: "berryclub.ek.near",
